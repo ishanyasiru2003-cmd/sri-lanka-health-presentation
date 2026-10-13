@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lanka Health Indicators | Data Science Presentation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated AI Network Background -->
+<canvas id="ai-network"></canvas>
+
+    <main class="presentation">
+        
+        <!-- SLIDE 02: PROJECT OBJECTIVES -->
+<section class="slide" id="slide2">
+
+    <div class="background-glow"></div>
+
+    <div class="objectives-container">
+
+        <div class="section-header">
+            <span class="section-number">02 / PROJECT OVERVIEW</span>
+
+            <h2 class="section-title">
+                PROJECT <span>OBJECTIVES</span>
+            </h2>
+
+            <p class="section-description">
+                Applying a complete data analysis and machine learning
+                workflow to real-world Sri Lankan health data.
+            </p>
+        </div>
+
+        <div class="objectives-grid">
+
+            <div class="objective-card">
+                <div class="objective-icon">🎯</div>
+                <span class="objective-number">01</span>
+                <h3>Real-World Data</h3>
+                <p>
+                    Analyze Sri Lankan health indicators obtained
+                    from the World Health Organization.
+                </p>
+            </div>
+
+            <div class="objective-card">
+                <div class="objective-icon">🧹</div>
+                <span class="objective-number">02</span>
+                <h3>Data Cleaning</h3>
+                <p>
+                    Identify missing values and prepare
+                    reliable data for analysis.
+                </p>
+            </div>
+
+            <div class="objective-card">
+                <div class="objective-icon">📊</div>
+                <span class="objective-number">03</span>
+                <h3>Exploratory Analysis</h3>
+                <p>
+                    Discover patterns and trends using
+                    statistical visualizations.
+                </p>
+            </div>
+
+            <div class="objective-card">
+                <div class="objective-icon">🧪</div>
+                <span class="objective-number">04</span>
+                <h3>Hypothesis Testing</h3>
+                <p>
+                    Evaluate statistical relationships
+                    through two hypothesis tests.
+                </p>
+            </div>
+
+            <div class="objective-card">
+                <div class="objective-icon">🤖</div>
+                <span class="objective-number">05</span>
+                <h3>Machine Learning</h3>
+                <p>
+                    Develop Ridge Regression and
+                    Random Forest Regression models.
+                </p>
+            </div>
+
+            <div class="objective-card">
+                <div class="objective-icon">📈</div>
+                <span class="objective-number">06</span>
+                <h3>Model Evaluation</h3>
+                <p>
+                    Compare model performance using
+                    MAE, RMSE and R² metrics.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="slide-footer">
+            NUMERICAL SCIENCE • DATA ANALYSIS & MACHINE LEARNING
+        </div>
+
+    </div>
+
+</section>
+<!-- SLIDE 04: DATA CLEANING & PREPROCESSING -->
+<section class="slide" id="slide4">
+
+    <div class="background-glow"></div>
+
+    <div class="prep-container">
+
+        <div class="section-header">
+            <span class="section-number">04 / DATA PREPARATION</span>
+            <h2 class="section-title">
+                DATA CLEANING <span>& PREPROCESSING</span>
+            </h2>
+        </div>
+
+        <div class="prep-grid">
+
+            <!-- DATA CLEANING PANEL -->
+            <div class="prep-panel">
+
+                <div class="prep-panel-title">🧹 DATA CLEANING</div>
+
+                <div class="prep-step">
+                    <div class="step-num">01</div>
+                    <div>
+                        <h4>Data Inspection</h4>
+                        <p>Loaded the CSV with Pandas and checked shape, data types and missing values.</p>
+                    </div>
+                </div>
+
+                <div class="prep-step">
+                    <div class="step-num">02</div>
+                    <div>
+                        <h4>Missing Target Removal</h4>
+                        <p>Removed rows with missing <span class="hl">Numeric</span> values:
+                        30,912 → <span class="hl">28,268</span> records.</p>
+                    </div>
+                </div>
+
+                <div class="prep-step">
+                    <div class="step-num">03</div>
+                    <div>
+                        <h4>Target Leakage Prevention</h4>
+                        <p>Excluded <span class="hl">Value, Low, High</span> as they directly represent the target.</p>
+                    </div>
+                </div>
+
+                <div class="prep-step">
+                    <div class="step-num">04</div>
+                    <div>
+                        <h4>Irrelevant Feature Removal</h4>
+                        <p>Dropped identifier codes and URL fields from the model inputs.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- PREPROCESSING PANEL -->
+            <div class="prep-panel purple">
+
+                <div class="prep-panel-title">⚙️ DATA PREPROCESSING</div>
+
+                <div class="prep-step">
+                    <div class="step-num">01</div>
+                    <div>
+                        <h4>Missing Value Imputation</h4>
+                        <p><span class="hl">Median</span> for numerical and <span class="hl">Most Frequent</span> for categorical features.</p>
+                    </div>
+                </div>
+
+                <div class="prep-step">
+                    <div class="step-num">02</div>
+                    <div>
+                        <h4>Categorical Encoding</h4>
+                        <p>Converted categorical variables using <span class="hl">One-Hot Encoding</span>.</p>
+                    </div>
+                </div>
+
+                <div class="prep-step">
+                    <div class="step-num">03</div>
+                    <div>
+                        <h4>Feature Scaling</h4>
+                        <p>Standardized numerical year variables using <span class="hl">StandardScaler</span>.</p>
+                    </div>
+                </div>
+
+                <div class="prep-step">
+                    <div class="step-num">04</div>
+                    <div>
+                        <h4>Shared Pipeline</h4>
+                        <p>Same Scikit-learn preprocessing pipeline applied to both ML models.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TRAIN TEST SPLIT -->
+        <div class="split-box">
+            <div class="split-label">
+                <span>✂️ TRAIN-TEST SPLIT</span>
+                <span>random_state = 42</span>
+            </div>
+            <div class="split-bar">
+                <div class="split-train">TRAINING SET • 80% (≈ 22,614)</div>
+                <div class="split-test">TEST • 20% (≈ 5,654)</div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<!-- SLIDE 03: DATASET OVERVIEW -->
+<section class="slide" id="slide3">
+
+    <div class="background-glow"></div>
+
+    <div class="dataset-container">
+
+        <div class="section-header">
+            <span class="section-number">03 / DATASET INFORMATION</span>
+
+            <h2 class="section-title">
+                DATASET <span>OVERVIEW</span>
+            </h2>
+
+            <p class="section-description">
+                Real-world Sri Lankan health indicators collected
+                by the World Health Organization.
+            </p>
+        </div>
+
+        <!-- Statistics Dashboard -->
+        <div class="stats-dashboard">
+
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <h3 class="counter" data-target="30912">0</h3>
+                <p>TOTAL RECORDS</p>
+                <div class="stat-line"></div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🗂️</div>
+                <h3 class="counter" data-target="17">0</h3>
+                <p>DATASET VARIABLES</p>
+                <div class="stat-line"></div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <h3 class="counter" data-target="28268">0</h3>
+                <p>USABLE RECORDS</p>
+                <div class="stat-line"></div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🔍</div>
+                <h3 class="counter" data-target="2644">0</h3>
+                <p>MISSING TARGET VALUES</p>
+                <div class="stat-line"></div>
+            </div>
+
+        </div>
+
+        <!-- Dataset Information -->
+        <div class="dataset-info">
+
+            <div class="info-panel">
+
+                <h3>🌍 DATA SOURCE</h3>
+
+                <p>
+                    <strong>Organization:</strong>
+                    World Health Organization (WHO)
+                </p>
+
+                <p>
+                    <strong>Database:</strong>
+                    Global Health Observatory
+                </p>
+
+                <p>
+                    <strong>Distribution:</strong>
+                    Humanitarian Data Exchange (HDX)
+                </p>
+
+            </div>
+
+            <div class="info-panel">
+
+                <h3>🧬 DATA CHARACTERISTICS</h3>
+
+                <p>
+                    <strong>Numerical Features:</strong>
+                    Year, Start Year, End Year
+                </p>
+
+                <p>
+                    <strong>Categorical Features:</strong>
+                    Health Indicators, Population Dimensions
+                </p>
+
+                <p>
+                    <strong>ML Target Variable:</strong>
+                    Numeric Health Indicator Value
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="slide-footer">
+            SOURCE: WHO GLOBAL HEALTH OBSERVATORY • HDX
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- SLIDE 01: TITLE -->
+        <section class="slide active" id="slide1">
+
+            <div class="background-glow"></div>
+            <!-- Sri Lanka AI Healthcare Background -->
+<div class="sri-lanka-ai-bg"></div>
+
+            <div class="slide-content">
+
+                <div class="module-badge">
+                    HND IN COMPUTER SCIENCE WITH AI
+                </div>
+
+                <p class="subtitle">NUMERICAL SCIENCE • GROUP PROJECT</p>
+
+                <h1>
+                    SRI LANKA<br>
+                    <span>HEALTH INDICATORS</span>
+                </h1>
+
+                <h2>Data Analysis & Machine Learning</h2>
+
+                <div class="title-divider"></div>
+
+                <div class="team-container">
+
+                    <div class="team-member">
+                        <span class="member-icon">01</span>
+                        <div>
+                            <h3>M.I. YASIRU</h3>
+                            <p>INDEX NO: 006</p>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <span class="member-icon">02</span>
+                        <div>
+                            <h3>DHANANJANA</h3>
+                            <p>INDEX NO: 002</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="bottom-tag">
+                    POWERED BY PYTHON • DATA SCIENCE • MACHINE LEARNING
+                </div>
+
+            </div>
+        </section>
+
+    <!-- SLIDE 05: EXPLORATORY DATA ANALYSIS -->
+<section class="slide" id="slide5">
+
+    <div class="background-glow"></div>
+
+    <div class="eda-container">
+
+        <div class="section-header">
+            <span class="section-number">05 / EXPLORATORY ANALYSIS</span>
+
+            <h2 class="section-title">
+                EXPLORATORY <span>DATA ANALYSIS</span>
+            </h2>
+
+            <p class="section-description">
+                Discovering patterns, distributions and characteristics
+                of Sri Lanka's health indicators.
+            </p>
+        </div>
+
+        <div class="eda-grid">
+
+            <!-- CHART 01 -->
+            <div class="eda-card">
+
+                <div class="eda-card-header">
+                    <span class="chart-badge">EDA 01</span>
+                    <h3>Top 10 Health Indicators</h3>
+                </div>
+
+                <div class="chart-wrapper">
+                    <img
+                        src="assets/charts/eda_chart_1.png"
+                        alt="Top 10 Health Indicators">
+                </div>
+
+                <div class="chart-insight">
+                    <span>💡 INSIGHT</span>
+                    <p>
+                        Some indicators contain significantly more records,
+                        reflecting differences in years and dimensions.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- CHART 02 -->
+            <div class="eda-card">
+
+                <div class="eda-card-header">
+                    <span class="chart-badge">EDA 02</span>
+                    <h3>Target Value Distribution</h3>
+                </div>
+
+                <div class="chart-wrapper">
+                    <img
+                        src="assets/charts/eda_chart_2.png"
+                        alt="Distribution of Numeric Values">
+                </div>
+
+                <div class="chart-insight">
+                    <span>💡 INSIGHT</span>
+                    <p>
+                        Numeric values are highly skewed because the dataset
+                        combines different health measurements and scales.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="slide-footer">
+            DATA VISUALIZATION • PYTHON • MATPLOTLIB
+        </div>
+
+    </div>
+
+</section>
+        <!-- SLIDE 06: EDA - TRENDS & DEMOGRAPHICS -->
+        <section class="slide" id="slide6">
+
+            <div class="background-glow"></div>
+
+            <div class="eda-container">
+
+                <div class="section-header">
+                    <span class="section-number">06 / EXPLORATORY ANALYSIS (PART 2)</span>
+
+                    <h2 class="section-title">
+                        TEMPORAL & <span>DEMOGRAPHIC TRENDS</span>
+                    </h2>
+
+                    <p class="section-description">
+                        Analyzing historical trends and sex-disaggregated health outcomes in Sri Lanka.
+                    </p>
+                </div>
+
+                <div class="eda-grid">
+
+                    <!-- CHART 03 -->
+                    <div class="eda-card">
+
+                        <div class="eda-card-header">
+                            <span class="chart-badge">EDA 03</span>
+                            <h3>Median Indicator Value by Year</h3>
+                        </div>
+
+                        <div class="chart-wrapper">
+                            <img
+                                src="assets/charts/eda_chart_3.png"
+                                alt="Median Numeric Health Indicator Value by Year">
+                        </div>
+
+                        <div class="chart-insight">
+                            <span>💡 TEMPORAL INSIGHT</span>
+                            <p>
+                                Aggregating heterogeneous indicators across years shows distortions; specific health indicators must be analyzed individually.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- CHART 04 -->
+                    <div class="eda-card">
+
+                        <div class="eda-card-header">
+                            <span class="chart-badge">EDA 04</span>
+                            <h3>Adolescent Mortality by Sex</h3>
+                        </div>
+
+                        <div class="chart-wrapper">
+                            <img
+                                src="assets/charts/eda_chart_4.png"
+                                alt="Mean Adolescent Mortality Rate by Sex">
+                        </div>
+
+                        <div class="chart-insight-stats">
+                            <div class="mini-stat male">
+                                <span>MALE MEAN</span>
+                                <h4>5.71 <sub>/ 1,000</sub></h4>
+                            </div>
+                            <div class="mini-stat female">
+                                <span>FEMALE MEAN</span>
+                                <h4>3.52 <sub>/ 1,000</sub></h4>
+                            </div>
+                        </div>
+
+                        <div class="chart-insight" style="margin-top: 10px;">
+                            <span>💡 DEMOGRAPHIC INSIGHT</span>
+                            <p>
+                                Males demonstrate a substantially higher mean adolescent mortality rate compared to females (1990–2023).
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="slide-footer">
+                    TIME-SERIES & GENDER-BASED HEALTH ANALYSIS • 1990–2023
+                </div>
+
+            </div>
+
+        </section>
+            <!-- SLIDE 07: STATISTICAL HYPOTHESIS TESTING -->
+        <section class="slide" id="slide7">
+
+            <div class="background-glow"></div>
+
+            <div class="hypothesis-container">
+
+                <div class="section-header">
+                    <div class="presenter-tag">PRESENTER: DHANANJANA (002)</div>
+                    <span class="section-number">07 / STATISTICAL INFERENCE</span>
+
+                    <h2 class="section-title">
+                        HYPOTHESIS <span>TESTING</span>
+                    </h2>
+
+                    <p class="section-description">
+                        Inferential statistical evaluations conducted at the 5% significance level (&alpha; = 0.05).
+                    </p>
+                </div>
+
+                <div class="hypothesis-grid">
+
+                    <!-- TEST 01: PAIRED T-TEST -->
+                    <div class="hypo-card">
+
+                        <div class="hypo-header">
+                            <span class="hypo-badge t-test">TEST 01 • SCIPY</span>
+                            <h3>Paired t-Test</h3>
+                            <p class="hypo-sub">Male vs Female Adolescent Mortality (1990–2023)</p>
+                        </div>
+
+                        <div class="hypo-body">
+
+                            <div class="hypothesis-box">
+                                <div class="hypo-row">
+                                    <span class="hypo-label">H₀ (Null):</span>
+                                    <span class="hypo-text">Mean yearly male and female rates are equal (&mu;₁ = &mu;₂)</span>
+                                </div>
+                                <div class="hypo-row">
+                                    <span class="hypo-label">H₁ (Alt):</span>
+                                    <span class="hypo-text">Mean yearly male and female rates differ (&mu;₁ &ne; &mu;₂)</span>
+                                </div>
+                            </div>
+
+                            <div class="stat-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-title">t-STATISTIC</span>
+                                    <h4 class="metric-val cyan">9.5939</h4>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-title">p-VALUE</span>
+                                    <h4 class="metric-val purple">4.525e-11</h4>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-title">DECISION (p &lt; 0.05)</span>
+                                    <span class="status-badge reject">REJECT H₀</span>
+                                </div>
+                            </div>
+
+                            <div class="hypo-conclusion">
+                                <strong>Conclusion:</strong> Statistically significant evidence that male adolescent mortality is substantially higher than female mortality in Sri Lanka.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- TEST 02: PEARSON CORRELATION -->
+                    <div class="hypo-card">
+
+                        <div class="hypo-header">
+                            <span class="hypo-badge corr">TEST 02 • SCIPY</span>
+                            <h3>Pearson Correlation</h3>
+                            <p class="hypo-sub">Adolescent Mortality Rate vs Year (Both Sexes)</p>
+                        </div>
+
+                        <div class="hypo-body">
+
+                            <div class="hypothesis-box">
+                                <div class="hypo-row">
+                                    <span class="hypo-label">H₀ (Null):</span>
+                                    <span class="hypo-text">No linear correlation between year & rate (&rho; = 0)</span>
+                                </div>
+                                <div class="hypo-row">
+                                    <span class="hypo-label">H₁ (Alt):</span>
+                                    <span class="hypo-text">A linear correlation exists between year & rate (&rho; &ne; 0)</span>
+                                </div>
+                            </div>
+
+                            <div class="stat-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-title">CORRELATION (r)</span>
+                                    <h4 class="metric-val cyan">-0.7758</h4>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-title">p-VALUE</span>
+                                    <h4 class="metric-val purple">4.386e-08</h4>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-title">DECISION (p &lt; 0.05)</span>
+                                    <span class="status-badge reject">REJECT H₀</span>
+                                </div>
+                            </div>
+
+                            <div class="hypo-conclusion">
+                                <strong>Conclusion:</strong> Strong negative linear relationship (r = -0.78), showing a significant downward trend in adolescent mortality over time.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="slide-footer">
+                    INFERENTIAL STATISTICS • PYTHON SCIPY.STATS • SIGNIFICANCE LEVEL &alpha; = 0.05
+                </div>
+
+            </div>
+
+        </section>
+    <!-- SLIDE 08: MACHINE LEARNING MODELS -->
+<section class="slide" id="slide8">
+
+    <div class="background-glow"></div>
+
+    <div class="ml-container">
+
+        <div class="section-header">
+            <span class="section-number">
+                08 / MACHINE LEARNING
+            </span>
+
+            <h2 class="section-title">
+                MACHINE LEARNING <span>MODELS</span>
+            </h2>
+
+            <p class="section-description">
+                Developing and evaluating two regression algorithms
+                to predict numerical health indicator values.
+            </p>
+        </div>
+
+        <!-- MODEL COMPARISON -->
+        <div class="ml-model-grid">
+
+            <!-- RIDGE REGRESSION -->
+            <div class="ml-model-card ridge">
+
+                <div class="ml-model-header">
+                    <div class="ml-model-icon">📈</div>
+                    <span class="ml-model-badge">
+                        MODEL 01
+                    </span>
+                </div>
+
+                <h3>Ridge Regression</h3>
+
+                <p class="ml-model-description">
+                    A linear regression algorithm that uses
+                    L2 regularization to reduce overfitting
+                    and improve generalization.
+                </p>
+
+                <div class="ml-model-features">
+
+                    <div class="ml-feature">
+                        <span>✓</span>
+                        Linear Regression Approach
+                    </div>
+
+                    <div class="ml-feature">
+                        <span>✓</span>
+                        L2 Regularization
+                    </div>
+
+                    <div class="ml-feature">
+                        <span>✓</span>
+                        Handles Correlated Features
+                    </div>
+
+                </div>
+
+                <div class="ml-model-footer">
+                    <span>ALGORITHM TYPE</span>
+                    <strong>LINEAR REGRESSION</strong>
+                </div>
+
+            </div>
+
+            <!-- RANDOM FOREST -->
+            <div class="ml-model-card forest">
+
+                <div class="ml-model-header">
+                    <div class="ml-model-icon">🌲</div>
+                    <span class="ml-model-badge">
+                        MODEL 02
+                    </span>
+                </div>
+
+                <h3>Random Forest Regression</h3>
+
+                <p class="ml-model-description">
+                    An ensemble learning algorithm that
+                    combines multiple decision trees
+                    to capture complex nonlinear patterns.
+                </p>
+
+                <div class="ml-model-features">
+
+                    <div class="ml-feature">
+                        <span>✓</span>
+                        Ensemble Learning
+                    </div>
+
+                    <div class="ml-feature">
+                        <span>✓</span>
+                        Multiple Decision Trees
+                    </div>
+
+                    <div class="ml-feature">
+                        <span>✓</span>
+                        Nonlinear Relationships
+                    </div>
+
+                </div>
+
+                <div class="ml-model-footer">
+                    <span>ALGORITHM TYPE</span>
+                    <strong>ENSEMBLE REGRESSION</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ML WORKFLOW -->
+        <div class="ml-workflow">
+
+            <h3>⚙️ MACHINE LEARNING WORKFLOW</h3>
+
+            <div class="workflow-steps">
+
+                <div class="workflow-step">
+                    <span>01</span>
+                    <p>Dataset</p>
+                </div>
+
+                <div class="workflow-arrow">➜</div>
+
+                <div class="workflow-step">
+                    <span>02</span>
+                    <p>Preprocessing</p>
+                </div>
+
+                <div class="workflow-arrow">➜</div>
+
+                <div class="workflow-step">
+                    <span>03</span>
+                    <p>Train / Test Split</p>
+                </div>
+
+                <div class="workflow-arrow">➜</div>
+
+                <div class="workflow-step">
+                    <span>04</span>
+                    <p>Model Training</p>
+                </div>
+
+                <div class="workflow-arrow">➜</div>
+
+                <div class="workflow-step">
+                    <span>05</span>
+                    <p>Evaluation</p>
+                </div>
+
+            </div>
+
+            <div class="ml-split-info">
+                <span>TRAINING DATA: 80%</span>
+                <span>TEST DATA: 20%</span>
+                <span>RANDOM STATE: 42</span>
+            </div>
+
+        </div>
+
+        <div class="slide-footer">
+            SCIKIT-LEARN • REGRESSION MODELS • MACHINE LEARNING
+        </div>
+
+    </div>
+
+</section>
+<!-- SLIDE 09: MODEL PERFORMANCE -->
+<section class="slide" id="slide9">
+
+    <div class="background-glow"></div>
+
+    <div class="performance-container">
+
+        <div class="section-header">
+
+            <span class="section-number">
+                09 / MODEL EVALUATION
+            </span>
+
+            <h2 class="section-title">
+                MODEL <span>PERFORMANCE</span>
+            </h2>
+
+            <p class="section-description">
+                Comparing Ridge Regression and Random Forest
+                Regression using unseen test data.
+            </p>
+
+        </div>
+
+        <!-- PERFORMANCE SUMMARY -->
+
+        <div class="performance-grid">
+
+            <!-- RIDGE MODEL -->
+
+            <div class="performance-card winner">
+
+                <div class="performance-card-header">
+
+                    <span class="model-label">
+                        MODEL 01
+                    </span>
+
+                    <span class="winner-badge">
+                        🏆 BEST PERFORMING
+                    </span>
+
+                </div>
+
+                <h3>Ridge Regression</h3>
+
+                <div class="r2-value r2-counter" data-target="0.6418">
+    0.0000
+</div>
+
+                <p class="r2-label">
+                    R² SCORE
+                </p>
+
+                <div class="performance-bar">
+
+                    <div
+                        class="bar-fill ridge-bar"
+                        data-width="64.18">
+                    </div>
+
+                </div>
+
+                <div class="performance-metrics">
+
+                    <div>
+                        <span>MAE</span>
+                        <strong>14,376,990.96</strong>
+                    </div>
+
+                    <div>
+                        <span>RMSE</span>
+                        <strong>828,985,347.01</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RANDOM FOREST MODEL -->
+
+            <div class="performance-card">
+
+                <div class="performance-card-header">
+
+                    <span class="model-label">
+                        MODEL 02
+                    </span>
+
+                    <span class="forest-label">
+                        ENSEMBLE MODEL
+                    </span>
+
+                </div>
+
+                <h3>Random Forest Regression</h3>
+
+                <div class="r2-value forest-value r2-counter" data-target="0.1938">
+    0.0000
+</div>
+
+                <p class="r2-label">
+                    R² SCORE
+                </p>
+
+                <div class="performance-bar">
+
+                    <div
+                        class="bar-fill forest-bar"
+                        data-width="19.38">
+                    </div>
+
+                </div>
+
+                <div class="performance-metrics">
+
+                    <div>
+                        <span>MAE</span>
+                        <strong>25,402,718.12</strong>
+                    </div>
+
+                    <div>
+                        <span>RMSE</span>
+                        <strong>1,243,694,107.70</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RESULT INTERPRETATION -->
+
+        <div class="performance-insight">
+
+            <div class="insight-icon">
+                💡
+            </div>
+
+            <div>
+
+                <h3>KEY FINDING</h3>
+
+                <p>
+                    Ridge Regression achieved the highest R² score
+                    (0.6418) and lower prediction errors compared
+                    with Random Forest Regression. However,
+                    the dataset combines different health indicators
+                    and measurement units, making the regression
+                    task challenging.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="slide-footer">
+            EVALUATION METRICS • MAE • RMSE • R²
+        </div>
+
+    </div>
+
+</section>
+<!-- SLIDE 10: RESULTS AND DISCUSSION -->
+<section class="slide" id="slide10">
+
+    <div class="background-glow"></div>
+    <!-- Floating AI Data Analyst Illustration -->
+<div class="ai-analyst-visual">
+    <img
+        src="assets/images/analyst.png"
+        alt="AI Data Scientist Analyzing Healthcare Data">
+</div>
+
+    <div class="results-container">
+
+        <div class="section-header">
+
+            <span class="section-number">
+                10 / RESEARCH FINDINGS
+            </span>
+
+            <h2 class="section-title">
+                RESULTS & <span>DISCUSSION</span>
+            </h2>
+
+            <p class="section-description">
+                Key insights obtained through exploratory analysis,
+                statistical testing and machine learning.
+            </p>
+
+        </div>
+
+        <!-- KEY FINDINGS -->
+
+        <div class="results-grid">
+
+            <!-- FINDING 01 -->
+
+            <div class="result-card">
+
+                <div class="result-card-top">
+                    <span class="result-icon">📊</span>
+                    <span class="result-number">01</span>
+                </div>
+
+                <h3>Dataset Characteristics</h3>
+
+                <p>
+                    The dataset contains multiple health indicators
+                    with different measurement units and scales.
+                    The target variable has a highly skewed distribution.
+                </p>
+
+                <div class="result-tag">
+                    DATA HETEROGENEITY
+                </div>
+
+            </div>
+
+            <!-- FINDING 02 -->
+
+            <div class="result-card">
+
+                <div class="result-card-top">
+                    <span class="result-icon">🧪</span>
+                    <span class="result-number">02</span>
+                </div>
+
+                <h3>Statistical Significance</h3>
+
+                <p>
+                    Both hypothesis tests produced p-values below
+                    0.05, providing evidence of a sex difference
+                    and a linear association with year.
+                </p>
+
+                <div class="result-tag">
+                    p &lt; 0.05
+                </div>
+
+            </div>
+
+            <!-- FINDING 03 -->
+
+            <div class="result-card">
+
+                <div class="result-card-top">
+                    <span class="result-icon">📉</span>
+                    <span class="result-number">03</span>
+                </div>
+
+                <h3>Adolescent Mortality Trend</h3>
+
+                <p>
+                    The selected adolescent mortality indicator
+                    showed a strong negative correlation with year
+                    (r = -0.7758) from 1990 to 2023.
+                </p>
+
+                <div class="result-tag">
+                    NEGATIVE CORRELATION
+                </div>
+
+            </div>
+
+            <!-- FINDING 04 -->
+
+            <div class="result-card">
+
+                <div class="result-card-top">
+                    <span class="result-icon">🤖</span>
+                    <span class="result-number">04</span>
+                </div>
+
+                <h3>Machine Learning Results</h3>
+
+                <p>
+                    Ridge Regression achieved better test performance
+                    (R² = 0.6418) than Random Forest Regression
+                    (R² = 0.1938).
+                </p>
+
+                <div class="result-tag">
+                    RIDGE REGRESSION
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RESEARCH INTERPRETATION -->
+
+        <div class="research-summary">
+
+            <div class="summary-icon">
+                💡
+            </div>
+
+            <div class="summary-content">
+
+                <h3>OVERALL INTERPRETATION</h3>
+
+                <p>
+                    The analysis identified statistically significant
+                    relationships within the selected adolescent mortality
+                    indicator. However, combining different health
+                    measurements into a single prediction target limits
+                    the interpretability of the machine learning results.
+                    Correlation does not establish causation.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="slide-footer">
+            DATA ANALYSIS • STATISTICAL INFERENCE • MACHINE LEARNING
+        </div>
+
+    </div>
+
+</section>
+<!-- SLIDE 11: CONCLUSION -->
+<section class="slide" id="slide11">
+
+    <div class="background-glow"></div>
+
+    <div class="conclusion-container">
+
+        <div class="section-header">
+            <span class="section-number">
+                11 / PROJECT CONCLUSION
+            </span>
+
+            <h2 class="section-title">
+                CONCLUSION & <span>FUTURE WORK</span>
+            </h2>
+
+            <p class="section-description">
+                Summarizing the project outcomes and identifying
+                opportunities for future improvement.
+            </p>
+        </div>
+
+        <div class="conclusion-grid">
+
+            <!-- CONCLUSION -->
+
+            <div class="conclusion-card">
+
+                <div class="conclusion-icon">🎯</div>
+
+                <h3>Project Conclusion</h3>
+
+                <p>
+                    This project successfully applied a complete
+                    data analysis and machine learning workflow
+                    to a real-world Sri Lankan health dataset
+                    obtained from the World Health Organization.
+                </p>
+
+                <div class="conclusion-points">
+
+                    <div>✓ Data Cleaning & Preprocessing</div>
+
+                    <div>✓ Four Exploratory Visualizations</div>
+
+                    <div>✓ Two Statistical Hypothesis Tests</div>
+
+                    <div>✓ Two Machine Learning Models</div>
+
+                </div>
+
+            </div>
+
+            <!-- FUTURE WORK -->
+
+            <div class="conclusion-card future">
+
+                <div class="conclusion-icon">🚀</div>
+
+                <h3>Future Recommendations</h3>
+
+                <p>
+                    Future research should focus on improving
+                    model interpretability and prediction
+                    performance through more targeted analysis.
+                </p>
+
+                <div class="conclusion-points">
+
+                    <div>✓ Focus on a Single Health Indicator</div>
+
+                    <div>✓ Use Consistent Measurement Units</div>
+
+                    <div>✓ Improve Feature Engineering</div>
+
+                    <div>✓ Apply Cross-Validation & Model Tuning</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="final-conclusion">
+
+            <span>💡 FINAL TAKEAWAY</span>
+
+            <p>
+                Meaningful machine learning predictions require
+                well-defined target variables, reliable preprocessing
+                and consistent data measurements.
+            </p>
+
+        </div>
+
+        <div class="slide-footer">
+            DATA SCIENCE • HEALTH ANALYTICS • FUTURE INNOVATION
+        </div>
+
+    </div>
+
+</section>
+<!-- SLIDE 12: REFERENCES & ACKNOWLEDGMENTS -->
+<section class="slide" id="slide12">
+
+    <div class="background-glow"></div>
+
+    <div class="references-container">
+
+        <div class="section-header">
+
+            <span class="section-number">
+                12 / ACADEMIC REFERENCES
+            </span>
+
+            <h2 class="section-title">
+                REFERENCES & <span>ACKNOWLEDGMENTS</span>
+            </h2>
+
+            <p class="section-description">
+                Data sources, technical documentation and
+                academic resources used in this project.
+            </p>
+
+        </div>
+
+        <div class="references-grid">
+
+            <!-- DATA SOURCES -->
+
+            <div class="reference-card">
+
+                <div class="reference-icon">🌍</div>
+
+                <h3>Dataset Sources</h3>
+
+                <div class="reference-item">
+                    <strong>World Health Organization (WHO)</strong>
+                    <p>Global Health Observatory – Sri Lanka Health Indicators.</p>
+                </div>
+
+                <div class="reference-item">
+                    <strong>Humanitarian Data Exchange (HDX)</strong>
+                    <p>WHO Health Indicators Dataset Distribution Platform.</p>
+                </div>
+
+            </div>
+
+            <!-- TECHNICAL REFERENCES -->
+
+            <div class="reference-card">
+
+                <div class="reference-icon">💻</div>
+
+                <h3>Technical Documentation</h3>
+
+                <div class="reference-item">
+                    <strong>Pandas & NumPy</strong>
+                    <p>Python data manipulation and numerical computing.</p>
+                </div>
+
+                <div class="reference-item">
+                    <strong>Scikit-learn</strong>
+                    <p>Machine learning preprocessing, regression and evaluation.</p>
+                </div>
+
+                <div class="reference-item">
+                    <strong>SciPy</strong>
+                    <p>Statistical hypothesis testing.</p>
+                </div>
+
+                <div class="reference-item">
+                    <strong>Matplotlib & Seaborn</strong>
+                    <p>Exploratory data visualization.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ACKNOWLEDGMENTS -->
+
+        <div class="acknowledgment-box">
+
+            <div class="ack-icon">🙏</div>
+
+            <div>
+
+                <h3>ACKNOWLEDGMENTS</h3>
+
+                <p>
+                    We acknowledge the World Health Organization
+                    and the Humanitarian Data Exchange for providing
+                    access to real-world health data. We also thank
+                    our academic lecturers for their guidance
+                    throughout this project.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="slide-footer">
+            WHO • HDX • PYTHON • SCIKIT-LEARN • SCIPY
+        </div>
+
+    </div>
+
+</section>
+<!-- SLIDE 13: THANK YOU & Q&A -->
+<section class="slide" id="slide13">
+
+    <!-- Transparent AI Background -->
+    <div class="thankyou-background"></div>
+
+    <div class="thankyou-overlay"></div>
+
+    <div class="thankyou-container">
+
+        <div class="thankyou-badge">
+            HND IN COMPUTER SCIENCE WITH AI
+        </div>
+
+        <p class="thankyou-module">
+            NUMERICAL SCIENCE • GROUP PROJECT
+        </p>
+
+        <h1 class="thankyou-title">
+            THANK <span>YOU</span>
+        </h1>
+
+        <div class="thankyou-divider"></div>
+
+        <h2 class="thankyou-subtitle">
+            QUESTIONS & ANSWERS
+        </h2>
+
+        <p class="thankyou-description">
+            Thank you for your attention.<br>
+            We welcome your questions and feedback.
+        </p>
+
+        <div class="thankyou-team">
+
+            <div class="thankyou-member">
+                <strong>M.I. YASIRU</strong>
+                <span>INDEX: 006</span>
+            </div>
+
+            <div class="thankyou-member">
+                <strong>DHANANJANA</strong>
+                <span>INDEX: 002</span>
+            </div>
+
+        </div>
+
+        <div class="thankyou-footer">
+            SRI LANKA HEALTH INDICATORS • DATA ANALYSIS & MACHINE LEARNING
+        </div>
+
+    </div>
+
+</section></main>
+
+    <script src="script.js"></script>
+</body>
+</html>
